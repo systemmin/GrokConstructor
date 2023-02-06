@@ -2,9 +2,9 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
 <head>
-    <title>Grok Constructor</title>
+    <title>Grok 构造器</title>
     <!-- <link href="css/styles.css" rel="stylesheet" type="text/css"/> -->
     <link href="css/combinedstyles.min.css" rel="stylesheet" type="text/css"/>
     <!--[if lte IE 7]>
@@ -19,17 +19,17 @@
 <div class="ym-wrapper">
     <header>
         <div class="ym-wbox">
-            <h1>Grok Constructor</h1>
+            <h1>Grok 构造器</h1>
         </div>
     </header>
     <nav id="nav">
         <div class="ym-hlist">
             <ul>
-                <li class="active"><strong>About</strong></li>
-                <li><a href="do/construction">Incremental Construction</a></li>
-                <li><a href="do/match">Matcher</a></li>
-                <li><a href="/do/translator">(New!) Pattern Translator</a></li>
-                <li><a href="do/automatic">Automatic Construction</a></li>
+                <li class="active"><strong>关于</strong></li>
+                <li><a href="do/construction">增量构建</a></li>
+                <li><a href="do/match">匹配</a></li>
+                <li><a href="/do/translator">（新！）模式转换器</a></li>
+                <li><a href="do/automatic">自动构造器</a></li>
             </ul>
         </div>
     </nav>
@@ -38,80 +38,70 @@
         <div class="ym-grid">
             <div class="ym-g66 ym-gl">
                 <div class="ym-gbox">
-                    <h3>What is this about?</h3>
+                    <h3>这是关于什么的?</h3>
+                    GrokConstructor 是用于测试和增量构造正则表达式的帮助器，用于为 Logstash 解析日志文件行的 grok 过滤器。
 
-                    <p><a href="https://github.com/stoerr/GrokConstructor">GrokConstructor</a>
-                        is a helper for testing and incremental construction of regular expressions
-                        for the <a href="http://logstash.net/docs/latest/filters/grok">grok</a> filter
-                        that parses logfile lines for <a href="http://logstash.net/">Logstash</a>.</p>
-
+                    <p><a href="https://github.com/stoerr/GrokConstructor">Grok 构造器</a>
+                        是用于测试和增量构造正则表达式的帮助器，用于为 <a href="http://logstash.net/">Logstash</a> 解析日志文件行的
+                        <a href="http://logstash.net/docs/latest/filters/grok">grok</a> 过滤器。
+                    </p>
                     <p>
-                        <a href="http://logstash.net/">Logstash</a>, part of the
-                        <a href="http://www.elasticsearch.org/overview/">ELK-Stack</a>,
-                        is a tool to collect log files from various sources,
-                        parse them into a JSON format and put them into one or more databases, index engines and so
-                        forth - often <a href="http://www.elasticsearch.org/">elasticsearch</a>.
-                        In the simplest case you can slurp log files from the filesystem, parse them using
-                        <a href="http://logstash.net/docs/latest/filters/grok">grok</a> -
-                        a collection of named <a href="/RegularExpressionSyntax.txt">regular
-                        expressions</a> - and put them into the integrated elastic search
-                        engine with a simple web frontend to search them. In my experience the hardest part is to get
-                        the regular expressions for parsing the log files right. The <a
-                            href="http://grokdebug.herokuapp.com/">Grok debugger</a> can help you test your regular
-                        expressions and provides Grok Discovery that sometimes can suggest regular expressions. This
-                        site, GrokConstructor, goes beyond that by providing an
-                        incremental construction process that helps you to construct a regular expression that matches
-                        all of a set of given log lines, and provides you a matcher where you can simultaneously try out
-                        your regular expression on several log lines. You can find
-                        <a href="https://github.com/stoerr/GrokConstructor">the source on GitHub</a>.
-                        If you are not comfortable with running this on a public platform / have hampered internet
-                        access,
-                        you can also run it locally / deploy it as a WAR somewhere.
+                        <a href="http://logstash.net/">Logstash</a> 是 <a href="http://www.elasticsearch.org/overview/">ELK-Stack</a>
+                        的一部分，是一种工具，用于从各种来源收集日志文件，将它们解析为 JSON
+                        格式，并将它们放入一个或多个数据库、索引引擎等——通常是 <a href="http://www.elasticsearch.org/">elasticsearch</a>。
+                        在最简单的情况下，您可以从文件系统中提取日志文件，使用 <a href="http://logstash.net/docs/latest/filters/grok">grok</a>
+                        （命名的<a href="/RegularExpressionSyntax.txt">正则表达式</a>的集合）解析它们，
+                        然后将它们放入带有简单 Web 前端的集成 elastic search 中进行搜索。 根据我的经验，最困难的部分是获得正确解析日志文件的正则表达式。
+                        <a href="http://grokdebug.herokuapp.com/">Grok 调试工具</a>可以帮助您测试正则表达式并提供有时可以建议正则表达式的 Grok 发现。
+                        这个站点 Grok构造器
+                        超越了这一点，它提供了一个增量构建过程，可以帮助您构建一个匹配所有给定日志行集的正则表达式，并为您提供一个匹配器，
+                        您可以在其中同时在多个日志上尝试您的正则表达式。 您可以在 <a href="https://github.com/stoerr/GrokConstructor">GitHub</a>. 上找到源代码。
+                        如果您不习惯在公共平台上运行它/防止互联网访问，您也可以在本地运行它/将它作为 WAR 部署在某个地方。
                     </p>
                 </div>
             </div>
             <div class="ym-g33 ym-gr">
                 <div class="ym-gbox">
                     <div class="box info">
-                        <h3>Impatient? Know it?</h3>
-
-                        <p><a href="http://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read"
-                              title="too long; didn't read">TLDR</a>? If you want to get started right now you can just
-                            use the main menu to go to the applications. There is a short explanation at the top, and
-                            you can call up a random example to try things out. If you want to know more beforehand,
-                            read on.
+                        <h3>不耐烦？知道？</h3>
+                        <p>
+                            <a href="http://en.wikipedia.org/wiki/Wikipedia:Too_long;_didn%27t_read"
+                               title="too long; didn't read">TLDR</a>？
+                            如果您想立即开始，您可以使用主菜单转到应用程序。
+                            顶部有一个简短的解释，您可以随机调用一个示例来尝试一下。
+                            如果您想事先了解更多信息，请继续阅读。
                         </p>
-
-                        <p>Please contact <a href="http://www.stoerr.net/">Hans-Peter St&ouml;rr</a> for bugs, suggestions or praise, or
-                            <a href="https://github.com/stoerr/GrokConstructor/issues">create an issue on GitHub</a>.
+                        <p> 请联系<a href="http://www.stoerr.net/">Hans-Peter St&ouml;rr</a>以获取错误、建议或表扬，或
+                            <a href="https://github.com/stoerr/GrokConstructor/issues">在 GitHub 上创建问题。</a>.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="ym-gbox"><h2>The applications</h2></div>
+        <div class="ym-gbox"><h2>应用程序</h2></div>
         <div class="ym-grid">
             <div class="ym-g33 ym-gl">
                 <div class="ym-gbox">
-                    <h3>Incremental Construction</h3>
+                    <h3>增量构建</h3>
 
-                    <p> The <a href="do/construction">incremental construction of grok expressions</a> aides you in a
-                        step by step construction of a grok regular expression that simultaneously matches all of a
-                        given set of log lines. </p>
+                    <p>
+                        grok 表达式的<a href="do/construction">增量构建</a>可帮助您逐步构建 grok 正则表达式，该正则表达式同时匹配所有给定的一组日志行。
+                    </p>
 
-                    <p> As input you provide those lines to match and select the libraries of grok patterns you want to
-                        choose from, and possibly give additional patterns.</p>
+                    <p> 作为输入，您提供这些行以匹配并选择您想要从中选择的 grok 模式库，并可能提供其他模式。</p>
 
-                    <p>The construction starts with <code>\A</code> (beginning of string) as an expression.
-                        In each step you are prompted to select either a common prefix of the yet unmatched rests of the
-                        log lines, or select one of the patterns from the grok library that matches a start segment of
-                        all rests of the log lines, or input a pattern that matches the next segment. In each case the
-                        next segment is usually the next logical entity to be parsed in the lines.</p>
+                    <p>
+                        构造以<code>\A</code>(字符串的开头) 作为表达式开始。
+                        ，系统都会提示您选择尚未匹配的其余日志行的公共前缀，
+                        或者从 grok 库中选择一个与所有其余日志行的起始段匹配的模式，
+                        或者输入一个模式匹配下一个片段。
+                        在每种情况下，下一个段通常是行中要解析的下一个逻辑实体。
+                    </p>
                 </div>
             </div>
             <div class="ym-g33 ym-gl">
                 <div class="ym-gbox">
-                    <h3>Matcher</h3>
+                    <h3>匹配</h3>
 
                     <p>The matcher allows you to <a href="do/match">try out grok expressions</a> on a couple of log
                         lines simultaneously. It shows for all lines whether they are matched, and displays the named
@@ -127,7 +117,7 @@
             </div>
             <div class="ym-g33 ym-gr">
                 <div class="ym-gbox">
-                    <h3><b>(New!)</b> Pattern Translator</h3>
+                    <h3><b>(新!)</b> 模式转换器</h3>
 
                     <p> This experimental service tries to generate a
                         <a href="http://logstash.net/docs/latest/filters/grok">grok regular expression</a>
@@ -151,7 +141,7 @@
         <div class="ym-grid">
             <div class="ym-g33 ym-gl">
                 <div class="ym-gbox">
-                    <h3>Automatic Construction</h3>
+                    <h3>自动构造器</h3>
 
                     <p> My first attempt was to try a <a href="do/automatic">automatic construction</a> of grok regular
                         expressions. Unfortunately, the algorithm generates too many results to be usable on real world

@@ -143,9 +143,9 @@ class WebDispatcher extends HttpServlet {
         </a>
       </li>
 
-    navlink("/../", "About") ++ navlink(IncrementalConstructionInputView.path, "Incremental Construction") ++
-      navlink(MatcherEntryView.path, "Matcher") ++ navlink(PatternTranslatorView.path, "(New!) Pattern Translator") ++
-      navlink(AutomaticDiscoveryView.path, "Automatic Construction")
+    navlink("/../", "关于") ++ navlink(IncrementalConstructionInputView.path, "增量构建") ++
+      navlink(MatcherEntryView.path, "Matcher") ++ navlink(PatternTranslatorView.path, "（新！）模式转换器") ++
+      navlink(AutomaticDiscoveryView.path, "自动构造器")
   }
 
   def errorPage(req: HttpServletRequest, resp: HttpServletResponse, e: Exception): Unit = {

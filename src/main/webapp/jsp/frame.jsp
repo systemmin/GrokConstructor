@@ -31,7 +31,7 @@
   <div class="ym-wrapper">
     <header>
     <div class="ym-wbox">
-      <h1>Grok Constructor</h1>
+      <h1>Grok 构造器</h1>
     </div>
     </header>
     <nav id="nav">
