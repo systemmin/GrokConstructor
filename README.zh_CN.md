@@ -12,43 +12,50 @@ Grok 是一组可以使用的命名正则表达式 - 例如 logstash http://logs
 
 ### http://grokconstructor.appspot.com/
 
-The best way is probably to use it on http://grokconstructor.appspot.com/ - 
-there is also a good description, and you can use it on
-some examples or for your own log lines you want to match.
+最好的方法可能是在 http://grokconstructor.appspot.com/ 上使用它 -
+还有一个很好的描述，你可以使用它
+一些示例或您想要匹配的自己的日志行。
 
-### Appengine Devserver, started from maven
+### maven启动
 
-To run locally, build with
+本地运行
+```shell
 mvn clean install
-and start with
+```
+```shell
 mvn clean install appengine:run
-. It runs on http://localhost:9090/ .
+```
+访问 http://localhost:9090/ .
 
-### Deploy as a WAR
+### WAR 部署
 
-If you want to run it on a system without internet connection or that has an application server, anyway,
-you can also deploy the created target/GrokConstructor-*-SNAPSHOT.war e.g. on a Tomcat.
+如果你想在没有互联网连接或有应用服务器的系统上运行它，无论如何，
+您还可以在Tomcat上部署创建的target/GrokConstructor-*-SNAPSHOT.war。
 
-### Standalone Executable
+### JAR 运行
 
+```shell
 java -jar GrokConstructor-0.1.0-SNAPSHOT-standalone.jar
+```
 
-runs an embedded Tomcat that makes it available at http://localhost:8080/ .
-Please be aware that this creates a directory .extract in the current directory that contains the 
-unpacked webapp. You can print additional arguments (such as ports, unpack location) with
+运行嵌入式Tomcat，使其在http://localhost:8080/ .
+请注意，这将在包含
+解包的webapp。您可以使用
 
+```shell
 java -jar GrokConstructor-0.1.0-SNAPSHOT-standalone.jar -h
+```
 
-### With Docker
 
-If you don't have a JDK installation and maven installed on your server and don't want to create a standalone executable otherwise, you can also run the build and startup within a on-build docker container (courtesy of Timothy Van Heest http://turtlemonvh.github.io/). Please note that this container executes the maven build within the docker container and then starts the development server.
+### Docker 部署
+如果您的服务器上没有安装JDK和maven，并且不想创建独立的可执行文件，那么您也可以在内置docker容器中运行构建和启动（由Timothy Van Heest提供http://turtlemonvh.github.io/). 请注意，这个容器在docker容器中执行maven构建，然后启动开发服务器。
 ```
 docker build -t grokconstructor .
 
 docker run -d -p 8080:8080 grokconstructor
 
 ```
-Alternatively, you can run it with docker-compose:
+或者，您可以使用docker compose运行它：
 
 ```
 docker-compose up
