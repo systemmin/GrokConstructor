@@ -1,5 +1,7 @@
 # grok 构造器
 
+简体中文 | [English](README.md)
+
 在线访问地址 http://grokconstructor.appspot.com/
 
 Grok 是一组可以使用的命名正则表达式 - 例如 logstash http://logstash.net/ -

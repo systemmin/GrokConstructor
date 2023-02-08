@@ -1,4 +1,5 @@
 # grokconstructor
+[简体中文](README.zh_CN.md) | English
 
 AVAILABLE ON http://grokconstructor.appspot.com/
 
