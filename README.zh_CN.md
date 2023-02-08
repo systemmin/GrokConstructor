@@ -65,8 +65,22 @@ docker-compose up
 
 ### 软件截图
 
+#### 首页
+
 ![首页](assets/1.png)
+
+#### 增量构建
+
 ![增量构建](assets/2.png)
+
+#### 匹配
+
 ![匹配](assets/3.png)
+
+#### 模式转换
+
 ![模式转换](assets/4.png)
+
+#### 自动构造器
+
 ![自动构造器](assets/5.png)
