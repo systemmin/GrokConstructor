@@ -8,12 +8,12 @@ import net.stoerr.grokconstructor.webframework.{WebView, WebViewWithHeaderAndSid
 import scala.xml.NodeSeq
 
 /**
- * Entry for the start parameters for the incremental construction of grok patterns.
+ * 输入 grok 模式增量构建的开始参数。
  * @author <a href="http://www.stoerr.net/">Hans-Peter Stoerr</a>
  * @since 01.03.13
  */
 class IncrementalConstructionInputView(val request: HttpServletRequest) extends WebViewWithHeaderAndSidebox {
-  val title: String = "Incremental Construction of Grok Patterns"
+  val title: String = "Grok 模式的增量构建"
   val form = IncrementalConstructionForm(request)
 
   def action: String = IncrementalConstructionStepView.path
@@ -29,16 +29,17 @@ class IncrementalConstructionInputView(val request: HttpServletRequest) extends 
     form.groklibs.values = List("grok-patterns", "java")
   }
 
-  def maintext: NodeSeq = <p>You can provide a number of log file lines and step by step construct a
-    <a href="http://logstash.net/docs/latest/filters/grok">grok pattern</a>
-    that matches all of these lines. In each step you select or input a pattern that matches the next logical segment
-    of the log line. This can either be a fixed string (e.g. a separator), a (possibly named) pattern from the grok
-    pattern library, or a pattern you explicitly specify.
-    You can also apply a <a href="http://logstash.net/docs/latest/filters/multiline">multiline filter</a> first.</p> ++
-    <p>In the form below, please enter some loglines for which you want to create a grok pattern, mark the pattern
-      libraries you want to draw your patterns from and then press</p> ++ submit("Go!")
+  def maintext: NodeSeq = <p>
+    您可以提供许多日志文件行，并逐步构建一个匹配所有这些行的<a href="http://logstash.net/docs/latest/filters/grok">grok 模式</a>。
+    在每个步骤中，选择或输入与日志行的下一个逻辑段匹配的模式。
+    这可以是固定字符串（例如分隔符）、grok模式库中的（可能命名的）
+    模式或您明确指定的模式。也可以先应用<a href="http://logstash.net/docs/latest/filters/multiline">多行过滤器</a>。
+  </p> ++
+    <p>
+      在下面的表格中，请输入您要为其创建 grok 模式的一些日志行，标记您要从中绘制模式的模式库，然后按
+    </p> ++ submit("解析!")
 
-  def sidebox: NodeSeq = <p>You can also just fill this with a</p> ++ buttonanchor(IncrementalConstructionInputView.path + "?randomize", "random example.")
+  def sidebox: NodeSeq = <p>你也可以用一个</p> ++ buttonanchor(IncrementalConstructionInputView.path + "?randomize", "随机示例")
 
   def formparts: NodeSeq = form.loglinesEntry ++ form.grokpatternEntry ++ form.multilineEntry
 

@@ -19,7 +19,7 @@ import scala.xml.{NodeSeq, Text}
   */
 class IncrementalConstructionStepView(val request: HttpServletRequest) extends WebViewWithHeaderAndSidebox {
 
-  override val title: String = "Incremental Construction of Grok Patterns in progress"
+  override val title: String = "正在进行的 Grok 模式增量构建"
   val form = IncrementalConstructionForm(request)
   val currentRegex = form.constructedRegex.value.getOrElse("\\A") + getNamedNextPartOrEmpty
   val currentJoniRegex = JoniRegex(GrokPatternLibrary.replacePatterns(currentRegex, form.grokPatternLibrary))

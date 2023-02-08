@@ -6,7 +6,7 @@ import net.stoerr.grokconstructor.forms.{GrokPatternFormPart, LoglinesFormPart, 
 import net.stoerr.grokconstructor.webframework.WebForm
 
 /**
- * Form for the entry of the basic data for the incremental finding of grok expressionsd
+ * 用于增量查找 grok 表达式的基本数据输入表单
  * @author <a href="http://www.stoerr.net/">Hans-Peter Stoerr</a>
  * @since 01.03.13
  */

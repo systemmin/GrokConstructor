@@ -25,15 +25,11 @@ trait GrokPatternFormPart extends WebForm {
 
   def grokpatternEntry =
     <div class="ym-fbox-text">
-      <label>
-        Please mark the libraries of
-        <a href="http://logstash.net/docs/latest/filters/grok">grok Patterns</a>
-        from
-        <a href="http://logstash.net/">logstash</a>
-        v.2.4.0 which you want to use. You probably want to use grok-patterns if you use any of the others, since they rely on the basic patterns defined there.</label>
+      <label>请标记 您要使用的 来自 <a href="http://logstash.net/">logstash</a> v.2.4.0 的 <a href="http://logstash.net/docs/latest/filters/grok">grok Patterns</a>库。
+      如果您使用任何其他模式，您可能想要使用 grok-patterns，因为它们依赖于那里定义的基本模式。</label>
+
     </div> ++ groklibs.checkboxes ++
-      grokadditionalinput.inputTextArea("You can also provide a library of some additional grok patterns in the same format " +
-              "as the pattern files linked above. On each line you give a pattern name, a space and the pattern. For example: WORD \\b\\w+\\b", 180, 5)
+      grokadditionalinput.inputTextArea("您还可以以与上面链接的模式文件相同的格式提供一些额外的 grok 模式库。在每一行你给出一个模式名称，一个空格和模式。例如：WORD \\b\\w+\\b", 180, 5)
 
   def grokhiddenfields: NodeSeq = groklibs.hiddenField ++ grokadditionalinput.hiddenField
 

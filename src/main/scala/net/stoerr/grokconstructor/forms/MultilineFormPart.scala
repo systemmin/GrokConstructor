@@ -21,10 +21,10 @@ trait MultilineFormPart extends GrokPatternFormPart {
   /** Whether to negate the multilineRegex: if false we will append
     * lines that do <em>not</em> match the filter, else we will append
     * lines that do match the filter. */
-  val multilineNegate = InputMultipleChoice("multilinenegate", Map(negatekey -> <span>negate the multiline regex</span>), List())
+  val multilineNegate = InputMultipleChoice("multilinenegate", Map(negatekey -> <span>否定多行正则表达式</span>), List())
 
   def multilineEntry: NodeSeq =
-    multilineRegex.inputText("If you want to use logstash's multiline filter please specify the used pattern (can include grok Patterns):", 80) ++
+    multilineRegex.inputText("如果您想使用 logstash 的多行过滤器，请指定使用的模式（可以包括grok模式）：", 80) ++
       multilineNegate.checkboxes
 
   def multilinehiddenfields: NodeSeq = multilineRegex.hiddenField ++ multilineNegate.hiddenField
