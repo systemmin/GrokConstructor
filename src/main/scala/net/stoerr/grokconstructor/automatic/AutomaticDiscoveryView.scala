@@ -23,7 +23,7 @@ class AutomaticDiscoveryView(val request: HttpServletRequest) extends WebViewWit
     case (name, regex) => name -> new JoniRegex(GrokPatternLibrary.replacePatterns(regex, form.grokPatternLibrary))
   }
   lazy val namedRegexpsList: List[(String, JoniRegex)] = namedRegexps.toList
-  override val title: String = "Automatic grok discovery"
+  override val title: String = "自动 grok 发现"
   val form = AutomaticDiscoveryForm(request)
   /** We try at most this many calls to avoid endless loops because of
     * the combinatorical explosion */
@@ -31,18 +31,16 @@ class AutomaticDiscoveryView(val request: HttpServletRequest) extends WebViewWit
 
   override def action: String = AutomaticDiscoveryView.path
 
-  def maintext: NodeSeq = <p>
-    This was
-    <a href="http://www.stoerr.net/">my</a>
-    first attempt to support creating <a href="http://logstash.net/docs/latest/filters/grok">grok expressions</a>.
-    It generates potentially all regular expressions that consist of fixed strings for things that are not alphanumeric and grok patterns from the library, and match all of a given
-    set of logfile lines. If there are several patterns from the grok library that match the same strings in every log line they are grouped together and presented as a drop down list.
-    Unfortunately, the number of possible regular expressions grows exponentially with the length of the lines, such that this is not really usable in practice. Thus, the result list is cut
-    off at 200 results. <a href="http://en.wiktionary.org/wiki/your_mileage_may_vary">YMMV</a>. </p> ++ <p>
-    Please enter some loglines for which you want generate possible grok patterns and then press</p> ++
-    submit("Go!")
+  def maintext: NodeSeq = <p>这是 <a href="http://www.stoerr.net/">我</a> 第一次尝试支持创建<a href="http://logstash.net/docs/latest/filters/grok">grok 表达式</a>。它可能生成所有正则表达式，
+    这些正则表达式由库中非字母数字和 grok 模式的固定字符串组成，并匹配所有给定的日志文件行集。
+    如果 grok 库中有多个模式与每个日志行中的相同字符串匹配，它们将组合在一起并显示为下拉列表。
+    不幸的是，可能的正则表达式的数量随着行的长度呈指数增长，因此这在实践中并不真正可用。
+    因此，结果列表被截断为 200 个结果。<a href="http://en.wiktionary.org/wiki/your_mileage_may_vary">YMMV（因人而异）</a>。
+  </p> ++ <p>
+    请输入一些日志行，您希望为其生成可能的 grok 模式，然后按</p> ++
+    submit("解析!")
 
-  def sidebox: NodeSeq = <p>You can also just try this out with a</p> ++ buttonanchor(AutomaticDiscoveryView.path + "?randomize", "random example")
+  def sidebox: NodeSeq = <p>你也可以试试这个</p> ++ buttonanchor(AutomaticDiscoveryView.path + "?randomize", "随机示例")
 
   if (null != request.getParameter("example")) {
     val trial = RandomTryLibrary.example(request.getParameter("example").toInt)
@@ -63,7 +61,7 @@ class AutomaticDiscoveryView(val request: HttpServletRequest) extends WebViewWit
   else Some(Left(fullpath(AutomaticDiscoveryView.path) + "?example=" + RandomTryLibrary.randomExampleNumber()))
 
   def resultTable(results: Iterator[List[RegexPart]]): xml.Node = table(
-    rowheader("At most 200 possible grok regex combinations that match all lines") ++ results.take(200).toList.map {
+    rowheader("最多 200 个可能匹配所有行的 grok 正则表达式组合") ++ results.take(200).toList.map {
       result =>
         row(result map {
           case FixedString(str) => <span>

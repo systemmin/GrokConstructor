@@ -12,7 +12,7 @@ import scala.collection.immutable.NumericRange
 import scala.xml.NodeSeq
 
 /**
-  * View that allows checking for matches of grok regular expressions in logfile lines.
+  * 视图，允许检查日志文件行中 grok 正则表达式的匹配。
   * @author <a href="http://www.stoerr.net/">Hans-Peter Stoerr</a>
   * @since 17.02.13
   */
@@ -21,7 +21,7 @@ class MatcherEntryView(val request: HttpServletRequest) extends WebViewWithHeade
 
   private val logger = Logger.getLogger("MatcherEntryView")
 
-  override val title: String = "Test grok patterns"
+  override val title: String = "测试 grok 模式 "
   val form = MatcherForm(request)
 
   override def action = MatcherEntryView.path + "#result"
@@ -29,21 +29,17 @@ class MatcherEntryView(val request: HttpServletRequest) extends WebViewWithHeade
   override def doforward: Option[Either[String, WebView]] = if (null == request.getParameter("randomize")) None
   else Some(Left(fullpath(MatcherEntryView.path) + "?example=" + RandomTryLibrary.randomExampleNumber()))
 
-  override def maintext: NodeSeq = <p>This tries to parse a set of given logfile lines with a given
-    <a href="http://logstash.net/docs/latest/filters/grok">grok regular expression</a>
-    (based on
-    <a href="/RegularExpressionSyntax.txt">Oniguruma regular expressions</a>
-    )
-    and prints
-    the matches for named patterns for each log line. You can also apply a
-    <a href="http://logstash.net/docs/latest/filters/multiline">multiline filter</a>
-    first.</p> ++
-    <p>Please enter some loglines for which you want to check a grok pattern,
-      the grok expression that should match these, mark the pattern libraries you draw your patterns from and then press
-    </p> ++ submit("Go!")
+  override def maintext: NodeSeq = <p>这将尝试使用给定的<a href="http://logstash.net/docs/latest/filters/grok"> grok 正则表达式</a>
+    <a href="/RegularExpressionSyntax.txt">（基于Onigruma正则表达式）</a>
+    解析一组给定的日志文件行，并为每个日志行打印命名模式的匹配项。也可以先应用
+    <a href="http://logstash.net/docs/latest/filters/multiline">多行过滤器</a>
+    。
+  </p> ++
+    <p>请输入一些您要检查 grok 模式的日志行，应该匹配这些的 grok 表达式，标记您从中绘制模式的模式库，然后按
+    </p> ++ submit("解析!")
 
   override def sidebox: NodeSeq = <p>
-    You can also just try this out with a</p> ++ buttonanchor(MatcherEntryView.path + "?randomize", "random example")
+    你也可以试试这个</p> ++ buttonanchor(MatcherEntryView.path + "?randomize", "随机示例")
 
   override def formparts: NodeSeq = form.loglinesEntry ++
     form.patternEntry ++

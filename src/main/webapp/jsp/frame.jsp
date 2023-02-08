@@ -6,11 +6,11 @@
   xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<meta http-equiv="language" content="en" />
+<meta http-equiv="language" content="zh" />
 <meta name="author" content="Hans-Peter St&ouml;rr, www.stoerr.net" />
 <meta name="robots" content="all, index, follow" />
 <meta name="allow-search" content="yes" />
-<meta name="content-language" content="en" />
+<meta name="content-language" content="zh" />
 <meta http-equiv="content-style-type" content="text/css" />
 <meta http-equiv="content-script-type" content="text/javascript" />
 <meta name="revisit-after" content="31 days" />

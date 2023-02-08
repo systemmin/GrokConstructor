@@ -144,7 +144,7 @@ class WebDispatcher extends HttpServlet {
       </li>
 
     navlink("/../", "关于") ++ navlink(IncrementalConstructionInputView.path, "增量构建") ++
-      navlink(MatcherEntryView.path, "Matcher") ++ navlink(PatternTranslatorView.path, "（新！）模式转换器") ++
+      navlink(MatcherEntryView.path, "匹配") ++ navlink(PatternTranslatorView.path, "（新！）模式转换器") ++
       navlink(AutomaticDiscoveryView.path, "自动构造器")
   }
 

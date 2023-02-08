@@ -84,20 +84,17 @@ class IncrementalConstructionStepView(val request: HttpServletRequest) extends W
       Some(Right(view))
     } else None
 
-  def maintext: NodeSeq = if (!constructionDone) <p>Please select the next component for the grok pattern.
-    You can select can either select a fixed string (e.g. a separator), a (possibly named) pattern from the grok
-    pattern library, or a pattern you explicitly specify.
-    You can use the browser's back button to retry (using form resubmission).
-    Make your selection and press</p> ++ submit("Continue!")
-  else <p>All log lines are successfully matched. You can copy the regular expression from the form field below.
-    You can also try out the constructed regex by calling the matcher.</p> ++ submit("Go to matcher")
+  def maintext: NodeSeq = if (!constructionDone) <p>请为 grok 模式选择下一个组件。您可以选择固定字符串（例如分隔符）、
+    grok 模式库中的（可能命名的）模式或您明确指定的模式。您可以使用浏览器的后退按钮重试（使用表单重新提交）。做出选择并按下</p> ++ submit("继续!")
+  else <p>已成功匹配所有日志行。可以从下面的表单字段复制正则表达式。
+    您还可以通过调用匹配器来尝试构建的正则表达式.</p> ++ submit("去匹配")
 
-  def sidebox: NodeSeq = <p>To try out how regular expressions on the unmatched rests press</p> ++ submit("Match " +
-    "restlines!", "matchrests", "_blank")
+  def sidebox: NodeSeq = <p>要尝试正则表达式如何对不匹配的剩余行</p> ++ submit("匹配 " +
+    "剩余行!", "matchrests", "_blank")
 
   override def result: NodeSeq = <span/>
 
-  def formparts: NodeSeq = form.constructedRegex.inputText("Constructed regular expression so far: ", 180, enabled =
+  def formparts: NodeSeq = form.constructedRegex.inputText("到目前为止构造的正则表达式：", 180, enabled =
     false) ++
     form.loglines.hiddenField ++
     form.constructedRegex.hiddenField ++
@@ -112,7 +109,7 @@ class IncrementalConstructionStepView(val request: HttpServletRequest) extends W
 
   def selectionPart: NodeSeq = {
     val alreadymatchedtable = table(
-      rowheader2("Already matched", "Unmatched rest of the loglines to match") ++
+      rowheader2("已匹配", "未匹配的其余日志行匹配") ++
         loglinesSplitted.map {
           case (start, rest) => row2(<code>
             {start}
@@ -123,25 +120,23 @@ class IncrementalConstructionStepView(val request: HttpServletRequest) extends W
     )
     if (!constructionDone) {
       alreadymatchedtable ++
-        formsection("To choose a continuation of your regular expression you can either choose a fixed string that is" +
-          " common to all log file line rests as a separator:") ++
+        formsection("要选择正则表达式的延续，您可以选择一个固定的字符串，该字符串对于所有日志文件行休息都是通用的作为分隔符：") ++
         <div class="ym-fbox-check">
           {commonprefixesOfLoglineRests.map(p => form.nextPart.radiobutton(JoniRegexQuoter.quote(p), <code>
           {'»' + visibleWhitespaces(p) + '«'}
         </code>)).reduceOption(_ ++ _).getOrElse(<span/>)}
         </div> ++
-        formsection("or select one of the following expressions from the grok library that matches a segment of the " +
-          "log lines:") ++
-        form.nameOfNextPart.inputText("Optional: give name for the grok expression to retrieve it's match value", 20,
+        formsection("o或者从 grok 库中选择以下表达式之一来匹配日志行的一部分：") ++
+        form.nameOfNextPart.inputText("可选：为 grok 表达式命名以检索它的匹配值", 20,
           1) ++
         table(
-          rowheader2("Grok expression", "Matches at the start of the rest of the loglines") ++
+          rowheader2("Grok 表达式", "在其余日志行的开头匹配") ++
             groknameListToMatchesCleanedup.map(grokoption)) ++
-        formsection("or you can input a regex that will match the next part of all logfile lines:") ++
+        formsection("或者您可以输入将匹配所有日志文件行的下一部分的正则表达式：") ++
         <div class="ym-fbox-check">
-          {form.nextPart.radiobutton(form.nextPartPerHandMarker, "continue with handmade regex")}
+          {form.nextPart.radiobutton(form.nextPartPerHandMarker, "继续手工制作的正则表达式")}
         </div> ++
-        form.nextPartPerHand.inputText("regular expression for next component:", 170)
+        form.nextPartPerHand.inputText("下一个组件的正则表达式：", 170)
     } else alreadymatchedtable
   }
 
